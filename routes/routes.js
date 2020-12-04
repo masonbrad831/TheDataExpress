@@ -38,7 +38,7 @@ exports.create = (req, res) => {
     });
 };
 
-exports.createLogin = (res, req) => {
+exports.loginPost = (res, req) => {
     let login = new Login({
         username: req.body.username,
         password : req.body.password,
@@ -57,3 +57,9 @@ exports.createLogin = (res, req) => {
 
     res.redirect('/')
 };
+
+exports.signup = (req, res) => {
+    res.render("signup", {
+        "title": "Sign Up"
+    })
+}

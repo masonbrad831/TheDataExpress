@@ -1,23 +1,22 @@
-const express = require("express"),
-    pug = require("pug"),
-    path = require("path"), 
-    routes = require("./routes/routes"),
-    bodyParser = require("body-parser");
+const express = require("express");
+const pug = require("pug");
+const bodyParser = require("body-parser");
+const path = require("path");
+const routes = require("./routes/routes");
 
 const app = express();
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+app.set("view engine", "pug");
+app.set("views", __dirname + "/views");
+app.use(express.static(path.join(__dirname, "/public")));
 
-
-let urlencodedParser = bodyParser.urlencoded( {
+const urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
-app.get('/', routes.index);
-
-app.get('/login', routes.create);
-app.post('/login', urlencodedParser, routes.createLogin);
+app.get("/", routes.index);
+app.get("/login", routes.login);
+app.post("/login", routes.loginPost);
+app.get("/signup", routes.signup);
 
 app.listen(3000);
