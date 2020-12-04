@@ -2,11 +2,17 @@ extends layout
 
 block content
     h1 #{title}
-    form("method"="POST" action="/login")
+    form("method"="POST" action="/signup")
         label Username
         input(name="username" type="text")
         br
         label Password
         input(name="password" type="text")
+        br
+        label Email
+        input(name="email" type="text")
+        br
+        label Age
+        input(name="age" type="text")
         br
         input(type="submit")

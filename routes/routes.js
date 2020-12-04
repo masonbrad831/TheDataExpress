@@ -9,3 +9,13 @@ exports.login = (req, res) => {
         "title": "Login"
     });
 }
+
+exports.loginPost = (req, res) => {
+    //idk what goes here but start the login session somehow
+}
+
+exports.signup = (req, res) => {
+    res.render("signup", {
+        "title": "Sign Up"
+    })
+}
