@@ -17,6 +17,7 @@ const urlencodedParser = bodyParser.urlencoded({
 app.get("/", routes.index);
 app.get("/login", routes.login);
 app.post("/login", routes.loginPost);
-app.get("/signup", routes.signup);
+app.get("/signup", routes.signUp);
+app.post("/signup", urlencodedParser, routes.signUpPost)
 
-app.listen(3000);
+app.listen(3001);

@@ -2,18 +2,29 @@ extends layout
 
 block content
     h1 #{title}
-    form("method"="POST" action="/signup")
-        label Username
+    form(id="form ""method"="POST" action="/signup")
+        label Username:
         input(name="username" type="text")
         br
-        label Password
+        label Password:
         input(name="password" type="text")
         br
-        label Email
+        label Email:
         input(name="email" type="text")
         br
-        label Age
+        label Age:
         input(name="age" type="text")
         br
+        label Question 1
+        br
+        label Multiple Choice 1:
+        input(type="text" name='multiple1' placeholder='Multiple Choice 1...')
+        br
+        label Multiple Choice 2:
+        input(type="text" name='multiple2' placeholder='Multiple Choice 2...')
+        br
+        label Multiple Choice 3:
+        input(type="text" name='multiple3' placeholder='Multiple Choice 3...')
+        br
         label
-        input(type="submit")
+        input(type="submit" value=""Login)
