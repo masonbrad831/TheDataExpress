@@ -32,13 +32,13 @@ exports.index = (req, res) => {
     });
 };
 
-exports.create = (req, res) => {
-    res.render('login', {
-        title: 'Add Login'
+exports.signUp = (req, res) => {
+    res.render('signup', {
+        title: 'Sign Up'
     });
 };
 
-exports.loginPost = (res, req) => {
+exports.signUpPost = (res, req) => {
     let login = new Login({
         username: req.body.username,
         password : req.body.password,
@@ -58,8 +58,19 @@ exports.loginPost = (res, req) => {
     res.redirect('/')
 };
 
-exports.signup = (req, res) => {
-    res.render("signup", {
-        "title": "Sign Up"
-    })
+exports.index = (req, res) => {
+    res.render("index", {
+        "title": "Home"
+    });
 }
+
+exports.login = (req, res) => {
+    res.render("login", {
+        "title": "Login"
+    });
+}
+
+exports.loginPost = (req, res) => {
+    //idk what goes here but start the login session somehow
+}
+

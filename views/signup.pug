@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  form(id='form' method='post' action='/signup')
+    p Username:
+      input(type='text' name='username' placeholder='Username...')
+    p Password: 
+        input(type="password" name='password' placeholder='Password...')
+    p Email: 
+        input(type="text" name='email' placeholder='Email...')
+    p Age:
+        input(type="text" name='age' placeholder='Age...')
+    br
+    p Question 1......
+    br
+    p Multiple Choice 1:
+        input(type="text" name='multiple1' placeholder='Multiple Choice 1...')
+    br
+    p Question 2......
+    br
+    p Multiple Choice 2:
+        input(type="text" name='multiple2' placeholder='Multiple Choice 2...')
+    br
+    p Question 3......
+    br
+    p Multiple Choice 3:
+        input(type="text" name='multiple3' placeholder='Multiple Choice 3...')
+
+    p
+      input(type='submit' value='Login')
