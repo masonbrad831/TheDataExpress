@@ -1,91 +1,98 @@
 const config = require('../config');
-
-
-exports.index = (req, res) => {
-    Login.find((err, login) => {
-        if(err) return console.error;
-        res.render('index', {
-            title: 'Login List',
-            login: login
-        });
-    });
-};
-
-exports.index = (req, res) => {
-    res.render("index", {
-        "title": "Home",
-        "config": config
-    });
-}
-
-exports.signUp = (req, res) => {
-    res.render('signup', {
-        title: 'Sign Up',
-        "config": config
-    });
-};
-
-
-exports.login = (req, res) => {
-    res.render("login", {
-        "title": "Login",
-        "config": config
-    });
-}
-
-
-
-
-///////// DATABASE CONNECTIONS/////////
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://ADMIN:password12345@calories.yanet.mongodb.net/Login_Information?retryWrites=true&w=majority', { 
+mongoose.connect('mongodb://localhost/data', {
     useUnifiedTopology: true,
-    useNewUrlParser: true 
+    useNewUrlParser: true
 });
 
 let mdb = mongoose.connection;
-mdb.on('error', console.error.bind(console, 'connnection error'));
+mdb.on('error', console.error.bind(console, 'connection error'));
 mdb.once('open', callback => {});
 
-let loginSchema = mongoose.Schema({
-    username : String,
+let accountSchema = mongoose.Schema({
+    username: String,
     password: String,
     email: String,
-    age : String,
-    multiple1 : String,
-    multiple2 : String,
-    multiple3 : String,
+    age: Number,
+    answer1: String,
+    answer2: String,
+    answer3: String
 });
 
-let Login = mongoose.model('LoginInfo', loginSchema);
+let User = mongoose.model('User_Collection', accountSchema);
 
+exports.index = (req, res) => {
+    res.render("index", {
+        title: "Home",
+        "config": config
+    });
+};
 
+exports.register = (req, res) => {
+    res.render('register', {
+        title: 'Register User',
+        "config": config
+    });
+};
 
-exports.signUpPost = (res, req) => {
-    let login = new Login({
+exports.registerUser = (req, res) => {
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(req.body.password, salt);
+    let user = new User({
         username: req.body.username,
-        password : req.body.password,
+        password: hash,
         email: req.body.email,
-        age : req.body.age,
-        multiple1 : req.body.multiple1,
-        multiple2 : req.body.multiple2,
-        multiple3 : req.body.multiple3
+        age: req.body.age,
+        answer1: req.body.answer1,
+        answer2: req.body.answer2,
+        answer3: req.body.answer3,
     });
-
-    login.save((err, login) => {
-        if (err) return console.error(err);
+    user.save((err, user) => {
+        if (err) return console.err(err);
         console.log(req.body.username + ' added');
-
-    });
-
+    })
     res.redirect('/')
 };
 
+exports.login = (req, res) => {
+    res.render("login", {
+        title: "Login",
+        "config": config
+    });
+};
+
+exports.loginUser = (req, res) => {
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(req.body.password, salt);
 
 
+    const test_user = User.find({
+        $and: [
+            {username: req.body.username},
+            {password: hash}
+        ]
+    });
+    if (req.body.username != ' ' && req.body.password != ' '){
+        if(test_user.exists){
+            req.session.user = {
+                isAuthenticated: true,
+                username: req.body.username
+            }
+            res.redirect('/profile');
+        } else {
+            res.redirect('/login');
+        }
+    }else{
+        res.redirect('/login');
+    }
+};
 
-exports.loginPost = (req, res) => {
-    //idk what goes here but start the login session somehow
-}
+exports.profile = (req, res) => {
+    res.render("profile", {
+        title: "Profile",
+        "config": config
+    });
+};
