@@ -1,9 +1,48 @@
+const config = require('../config');
+
+
+exports.index = (req, res) => {
+    Login.find((err, login) => {
+        if(err) return console.error;
+        res.render('index', {
+            title: 'Login List',
+            login: login
+        });
+    });
+};
+
+exports.index = (req, res) => {
+    res.render("index", {
+        "title": "Home",
+        "config": config
+    });
+}
+
+exports.signUp = (req, res) => {
+    res.render('signup', {
+        title: 'Sign Up',
+        "config": config
+    });
+};
+
+
+exports.login = (req, res) => {
+    res.render("login", {
+        "title": "Login",
+        "config": config
+    });
+}
+
+
+
+
+///////// DATABASE CONNECTIONS/////////
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://ADMIN:password12345@calories.yanet.mongodb.net/Login_Information?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://ADMIN:password12345@calories.yanet.mongodb.net/Login_Information?retryWrites=true&w=majority', { 
     useUnifiedTopology: true,
-    useNewURLParser: true
+    useNewUrlParser: true 
 });
 
 let mdb = mongoose.connection;
@@ -22,21 +61,7 @@ let loginSchema = mongoose.Schema({
 
 let Login = mongoose.model('LoginInfo', loginSchema);
 
-exports.index = (req, res) => {
-    Login.find((err, login) => {
-        if(err) return console.error;
-        res.render('index', {
-            title: 'Login List',
-            login: login
-        });
-    });
-};
 
-exports.signUp = (req, res) => {
-    res.render('signup', {
-        title: 'Sign Up'
-    });
-};
 
 exports.signUpPost = (res, req) => {
     let login = new Login({
@@ -58,19 +83,9 @@ exports.signUpPost = (res, req) => {
     res.redirect('/')
 };
 
-exports.index = (req, res) => {
-    res.render("index", {
-        "title": "Home"
-    });
-}
 
-exports.login = (req, res) => {
-    res.render("login", {
-        "title": "Login"
-    });
-}
+
 
 exports.loginPost = (req, res) => {
     //idk what goes here but start the login session somehow
 }
-
