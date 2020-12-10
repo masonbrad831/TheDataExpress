@@ -3,3 +3,8 @@ extends layout
 block content
     h1 #{title}
     p This is where the chart will go. Once I know how to do that.
+    canvas(id="stateChart" width="400" height="400")
+    canvas(id="musicChart" width="400" height="400")
+    canvas(id="animalChart" width="400" height="400")
+    script(src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0")
+    script(src="/homePageCharts.js")
