@@ -194,157 +194,159 @@ exports.api = (req, res) => {
             }
 
         };
-        for (const doc in accts) {
+        // console.log(accts);
+        for (let doc in accts) {
             // if(accts[doc].age) {
             //     ageCollection.push(accts[doc].age);
             // }
-            if(accts[doc].q1) {
-                switch (accts[doc].q1.toLowerCase()) {
-                    case 'AL' | 'Alabama':
+            console.log(accts[doc]);
+            if(accts[doc].answer1) {
+                switch (accts[doc].answer1) {
+                    case 'AL':
                         returnDoc.Q1.AL += 1;
                         break;
-                    case 'Ak' | 'Alaska' :
+                    case 'Ak' :
                         returnDoc.Q1.AK += 1;
                         break;
-                    case 'AZ' | 'Arizona':
+                    case 'AZ':
                         returnDoc.Q1.AZ += 1;
                         break;
-                    case 'AR' | 'Arkansas':
+                    case 'AR':
                         returnDoc.Q1.AR += 1;
                         break;
-                    case 'CA' | 'California' :
+                    case 'CA' :
                         returnDoc.Q1.CA += 1;
                         break;
-                    case 'CO' | 'Colorado' :
+                    case 'CO' :
                         returnDoc.Q1.CO += 1;
                         break;
-                    case 'CT' | 'Connecticut' :
+                    case 'CT' :
                         returnDoc.Q1.CT += 1;
                         break;
-                    case 'DE' | 'Delaware' :
+                    case 'DE' :
                         returnDoc.Q1.DE += 1;
                         break;
-                    case 'FL' | 'Florida' :
+                    case 'FL' :
                         returnDoc.Q1.FL += 1;
                         break;
-                    case 'GA' | 'Georgia' :
+                    case 'GA' :
                         returnDoc.Q1.GA += 1;
                         break;
-                    case 'HI' | 'Hawaii' :
+                    case 'HI' :
                         returnDoc.Q1.HI += 1;
                         break;
-                    case 'ID' | 'Idaho' :
+                    case 'ID' :
                         returnDoc.Q1.ID += 1;
                         break;
-                    case 'IL' | 'Illinois' :
+                    case 'IL' :
                         returnDoc.Q1.IL += 1;
                         break;
-                    case 'IN' | 'Indiana' :
+                    case 'IN' :
                         returnDoc.Q1.IN += 1;
                         break;
-                    case 'IA' | 'Iowa' :
+                    case 'IA' :
                         returnDoc.Q1.IA += 1;
                         break;
-                    case 'KS' | 'Kansas' :
+                    case 'KS' :
                         returnDoc.Q1.KS += 1;
                         break;
-                    case 'KY' | 'Kentucky' :
+                    case 'KY' :
                         returnDoc.Q1.KY += 1;
                         break;
-                    case 'LA' | 'Louisiana' :
+                    case 'LA' :
                         returnDoc.Q1.LA += 1;
                         break;
-                    case 'ME' | 'Maine' :
+                    case 'ME' :
                         returnDoc.Q1.ME += 1;
                         break;
-                    case 'MD' | 'Maryland' :
+                    case 'MD' :
                         returnDoc.Q1.MD += 1;
                         break;
-                    case 'MA' | 'Massachusetts' :
+                    case 'MA' :
                             returnDoc.Q1.MA += 1;
                         break;
-                    case 'MI' | 'Michigan' :
+                    case 'MI' :
                         returnDoc.Q1.MI += 1;
                         break;
-                    case 'MN' | 'Minnesota' :
+                    case 'MN' :
                         returnDoc.Q1.MN += 1;
                         break;
-                    case 'MS' | 'Mississippi' :
+                    case 'MS' :
                         returnDoc.Q1.MS += 1;
                         break;
-                    case 'MO' | 'Missouri' :
+                    case 'MO' :
                         returnDoc.Q1.MO += 1;
                         break;
-                    case 'MT' | 'Montana' :
+                    case 'MT' :
                         returnDoc.Q1.MT += 1;
                         break;
-                    case 'NV' | 'Nevada' :
+                    case 'NV' :
                         returnDoc.Q1.NV += 1;
                         break;
-                    case 'NH' | 'New Hampshire' :
+                    case 'NH' :
                         returnDoc.Q1.NH += 1;
                         break;
-                    case 'NJ' | 'New Jersey' :
+                    case 'NJ' :
                         returnDoc.Q1.NJ += 1;
                         break;
-                    case 'NM' | 'New Mexico' :
+                    case 'NM' :
                         returnDoc.Q1.NM += 1;
                         break;
-                    case 'NY' | 'New York' :
+                    case 'NY' :
                         returnDoc.Q1.NY += 1;
                         break;
-                    case 'NC' | 'New Carolina' :
+                    case 'NC' :
                         returnDoc.Q1.NC += 1;
                         break;
-                    case 'ND' | 'New Dakota' :
+                    case 'ND' :
                         returnDoc.Q1.ND += 1;
                         break;
-                    case 'OH' | 'Ohio' :
+                    case 'OH' :
                         returnDoc.Q1.OH += 1;
                         break;
-                    case 'OK' | 'Oklahoma' :
+                    case 'OK' :
                         returnDoc.Q1.OK += 1;
                         break;
-                    case 'OR' | 'Oregon' :
+                    case 'OR' :
                         returnDoc.Q1.OR += 1;
                         break;
-                    case 'PA' | 'Pennsylvania' :
+                    case 'PA' :
                         returnDoc.Q1.PA += 1;
                         break;
-                    case 'RI' | 'Rhode Island' :
+                    case 'RI' :
                         returnDoc.Q1.RI += 1;
                         break;
-                    case 'SC' | 'South Carolina' :
+                    case 'SC' :
                         returnDoc.Q1.SC += 1;
                         break;
-                    case 'SD' | 'South Dakota' :
+                    case 'SD' :
                         returnDoc.Q1.SD += 1;
                         break;
-                    case 'TN' | 'Tennessee' :
+                    case 'TN' :
                         returnDoc.Q1.TN += 1;
                         break;
-                    case 'TX' | 'Texas' :
+                    case 'TX' :
                         returnDoc.Q1.TX += 1;
                         break;
-                    case 'UT' | 'UTAH' :
+                    case 'UT' :
                         returnDoc.Q1.UT= 1;
                         break;
-                    case 'VT' | 'Vermont' :
+                    case 'VT' :
                         returnDoc.Q1.VT += 1;
                         break;
-                    case 'VA' | 'Virginia' :
+                    case 'VA' :
                         returnDoc.Q1.VA += 1;
                         break;
-                    case 'WA' | 'Washington' :
+                    case 'WA' :
                         returnDoc.Q1.WA += 1;
                         break;
-                    case 'WV' | 'West Virginia' :
+                    case 'WV' :
                         returnDoc.Q1.WV += 1;
                         break;
-                    case 'WI' | 'Wisconsin' :
+                    case 'WI' :
                         returnDoc.Q1.WI += 1;
                         break;
-                    case 'WY' | 'Wyoming' :
+                    case 'WY' :
                         returnDoc.Q1.WY += 1;
                         break;
 
@@ -352,8 +354,8 @@ exports.api = (req, res) => {
                         break;
                 }
             }
-            if(accts[doc].q2) {
-                switch (accts[doc].q2.toLowerCase()) {
+            if(accts[doc].answer2) {
+                switch (accts[doc].answer2) {
                     case 'Pop':
                         returnDoc.Q2.Pop += 1;
                         break;
@@ -376,8 +378,8 @@ exports.api = (req, res) => {
                         break;
                 }
             }
-            if(accts[doc].q3) {
-                switch (accts[doc].q3.toLowerCase()) {
+            if(accts[doc].answer3) {
+                switch (accts[doc].answer3) {
                     case 'Dog':
                         returnDoc.Q3.Dog += 1;
                         break;
@@ -401,6 +403,7 @@ exports.api = (req, res) => {
                 }
             }
         }
+        console.log(returnDoc);
         res.send(returnDoc);
     });
 };
