@@ -135,6 +135,7 @@ exports.api = (req, res) => {
                 DE: 0,
                 FL: 0,
                 GA: 0,
+                HI: 0,
                 ID: 0,
                 IL: 0,
                 IN: 0,
@@ -170,6 +171,7 @@ exports.api = (req, res) => {
                 UT: 0,
                 VT: 0,
                 VA: 0,
+                WA: 0,
                 WV: 0,
                 WI: 0,
                 WY: 0

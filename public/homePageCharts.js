@@ -1,5 +1,6 @@
-const stateChart = () => {
+const stateChart = (data) => {
     let context = document.getElementById("stateChart").getContext("2d");
+
     let chart = new Chart(context, {
         type: "bar",
         data: {
@@ -60,7 +61,7 @@ const stateChart = () => {
                 "Wyoming"],
             datasets: [{
                 label: 'Number of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -143,7 +144,7 @@ const stateChart = () => {
     });
 }
 
-const musicChart = () => {
+const musicChart = (data) => {
     let context = document.getElementById("musicChart").getContext("2d");
     let chart = new Chart(context, {
         type: "pie",
@@ -157,7 +158,7 @@ const musicChart = () => {
                 'Other'],
             datasets: [{
                 label: 'Number of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -180,7 +181,7 @@ const musicChart = () => {
     });
 }
 
-const animalChart = () => {
+const animalChart = (data) => {
     let context = document.getElementById("animalChart").getContext("2d");
     let chart = new Chart(context, {
         type: "pie",
@@ -194,7 +195,7 @@ const animalChart = () => {
                 'Other'],
             datasets: [{
                 label: 'Number of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -217,6 +218,12 @@ const animalChart = () => {
     });
 }
 
-stateChart();
-musicChart();
-animalChart();
+
+fetch('http://localhost:3000/api')
+    .then(response => response.json())
+    .then(data => {
+        console.log(Object.values(data.Q1));
+        stateChart(Object.values(data.Q1));
+        musicChart(Object.values(data.Q2));
+        animalChart(Object.values(data.Q3));
+    });
