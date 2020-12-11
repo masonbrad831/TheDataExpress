@@ -53,4 +53,6 @@ app.get('/logout', (req,res) => {
     });
 });
 
+app.get("/api", routes.api);
+
 app.listen(3000);
