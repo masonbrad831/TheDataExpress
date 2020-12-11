@@ -6,17 +6,15 @@ const stateChart = () => {
             labels: [
                 "Alabama", 
                 "Alaska", 
-                "American Samoa", 
                 "Arizona", 
                 "Arkansas", 
                 "California", 
                 "Colorado", 
                 "Connecticut", 
                 "Delaware", 
-                "District of Columbia", 
                 "Florida", 
                 "Georgia", 
-                "Guam", 
+
                 "Hawaii", 
                 "Idaho", 
                 "Illinois", 
@@ -27,6 +25,7 @@ const stateChart = () => {
                 "Louisiana", 
                 "Maine", 
                 "Maryland", 
+
                 "Massachusetts", 
                 "Michigan", 
                 "Minnesota", 
@@ -37,18 +36,18 @@ const stateChart = () => {
                 "Nevada", 
                 "New Hampshire",
                 "New Jersey", 
+
                 "New Mexico", 
                 "New York", 
                 "North Carolina", 
                 "North Dakota", 
-                "Northern Mariana Islands", 
                 "Ohio", 
                 "Oklahoma", 
                 "Oregon", 
-                "Pennsylvania", 
-                "Puerto Rico", 
+                "Pennsylvania",  
                 "Rhode Island", 
                 "South Carolina", 
+
                 "South Dakota", 
                 "Tennessee", 
                 "Texas", 
@@ -130,7 +129,13 @@ const stateChart = () => {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        fontSize: 6
                     }
                 }]
             }
