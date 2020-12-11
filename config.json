@@ -2,6 +2,7 @@
   "menu": [
     ["Home", "/", ""],
     ["Register", "/register", ""],
-    ["Login", "/login", ""]
+    ["Login", "/login", ""],
+    ["Settings", "/settings"]
   ]
 }

@@ -40,6 +40,8 @@ app.get("/login", routes.login);
 app.post('/login', urlencodedParser, routes.loginUser);
 app.get('/register', routes.register);
 app.post('/register', urlencodedParser, routes.registerUser);
+app.get('/settings', routes.settings);
+//app.post('/settings/:id', urlencodedParser, routes.editUser);
 app.get('/profile', checkAuth, routes.profile);
 app.get('/logout', (req,res) => {
     req.session.destroy(err => {

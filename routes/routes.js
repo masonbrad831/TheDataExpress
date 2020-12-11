@@ -38,6 +38,44 @@ exports.register = (req, res) => {
     });
 };
 
+exports.settings = (req, res) => {
+    res.render('settings', {
+        title: 'Settings',
+        "config" : config
+    });
+};
+
+// exports.edit = (req, res) => {
+//     User.findById(req.params.id, (err, user) => {
+//       if (err) return console.error(err);
+//       res.render('settings', {
+//         title: 'Edit User',
+//         "config" : config
+//       });
+//     });  
+//   };
+
+
+// exports.editUser = (req, res) => {
+//     User.findById(req.params.id, (err, user) => {
+//       if (err) return console.error(err);
+//       user.username = req.body.username;
+//       user.password = req.body.password;
+//       user.email = req.body.email;
+//       user.age = req.body.age;
+//       user.answer1 = req.body.answer1;
+//       user.answer2 = req.body.answer2;
+//       user.answer3 = req.body.answer3;
+
+//       user.save((err, user) => {
+//         if (err) return console.error(err);
+//         console.log(req.body.username + ' updated');
+//       });
+//       res.redirect('/');
+//     });
+//   };
+
+
 exports.registerUser = (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(req.body.password, salt);
