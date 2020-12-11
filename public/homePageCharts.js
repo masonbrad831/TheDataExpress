@@ -3,7 +3,61 @@ const stateChart = () => {
     let chart = new Chart(context, {
         type: "bar",
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: [
+                "Alabama", 
+                "Alaska", 
+                "Arizona", 
+                "Arkansas", 
+                "California", 
+                "Colorado", 
+                "Connecticut", 
+                "Delaware", 
+                "Florida", 
+                "Georgia", 
+
+                "Hawaii", 
+                "Idaho", 
+                "Illinois", 
+                "Indiana", 
+                "Iowa", 
+                "Kansas", 
+                "Kentucky", 
+                "Louisiana", 
+                "Maine", 
+                "Maryland", 
+
+                "Massachusetts", 
+                "Michigan", 
+                "Minnesota", 
+                "Mississippi", 
+                "Missouri", 
+                "Montana", 
+                "Nebraska", 
+                "Nevada", 
+                "New Hampshire",
+                "New Jersey", 
+
+                "New Mexico", 
+                "New York", 
+                "North Carolina", 
+                "North Dakota", 
+                "Ohio", 
+                "Oklahoma", 
+                "Oregon", 
+                "Pennsylvania",  
+                "Rhode Island", 
+                "South Carolina", 
+
+                "South Dakota", 
+                "Tennessee", 
+                "Texas", 
+                "Utah", 
+                "Vermont", 
+                "Virginia", 
+                "Washington", 
+                "West Virginia", 
+                "Wisconsin", 
+                "Wyoming"],
             datasets: [{
                 label: 'Number of Votes',
                 data: [12, 19, 3, 5, 2, 3],
@@ -13,7 +67,52 @@ const stateChart = () => {
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -30,7 +129,13 @@ const stateChart = () => {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        fontSize: 6
                     }
                 }]
             }
@@ -41,9 +146,15 @@ const stateChart = () => {
 const musicChart = () => {
     let context = document.getElementById("musicChart").getContext("2d");
     let chart = new Chart(context, {
-        type: "bar",
+        type: "pie",
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: [
+                'Pop', 
+                'Hip-hop', 
+                'Rock', 
+                'Rap', 
+                'Electronic', 
+                'Other'],
             datasets: [{
                 label: 'Number of Votes',
                 data: [12, 19, 3, 5, 2, 3],
@@ -66,24 +177,21 @@ const musicChart = () => {
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
     });
 }
 
 const animalChart = () => {
     let context = document.getElementById("animalChart").getContext("2d");
     let chart = new Chart(context, {
-        type: "bar",
+        type: "pie",
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: [
+                'Dog', 
+                'Cat', 
+                'Rabbit', 
+                'Turtle', 
+                'Fox', 
+                'Other'],
             datasets: [{
                 label: 'Number of Votes',
                 data: [12, 19, 3, 5, 2, 3],
@@ -106,15 +214,6 @@ const animalChart = () => {
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
     });
 }
 
