@@ -2,14 +2,15 @@ const express = require("express");
 const expressSession = require('express-session');
 const pug = require("pug");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 const path = require("path");
 const routes = require("./routes/routes");
-
 const app = express();
 
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(cookieParser('whatever'));
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -40,8 +41,8 @@ app.get("/login", routes.login);
 app.post('/login', urlencodedParser, routes.loginUser);
 app.get('/register', routes.register);
 app.post('/register', urlencodedParser, routes.registerUser);
-app.get('/settings', routes.settings);
-//app.post('/settings/:id', urlencodedParser, routes.editUser);
+app.get('/settings', checkAuth, routes.settings);
+app.post('/settings', urlencodedParser, routes.editUser);
 app.get('/profile', checkAuth, routes.profile);
 app.get('/logout', (req,res) => {
     req.session.destroy(err => {
