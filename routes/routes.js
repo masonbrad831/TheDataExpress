@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+let visited = 0;
+
 mongoose.connect('mongodb+srv://ADMIN:password12345@data.0iakt.mongodb.net/Data?retryWrites=true&w=majority', {
     useUnifiedTopology: true,
     useNewUrlParser: true
@@ -38,44 +40,6 @@ exports.register = (req, res) => {
     });
 };
 
-exports.settings = (req, res) => {
-    res.render('settings', {
-        title: 'Settings',
-        "config" : config
-    });
-};
-
-// exports.edit = (req, res) => {
-//     User.findById(req.params.id, (err, user) => {
-//       if (err) return console.error(err);
-//       res.render('settings', {
-//         title: 'Edit User',
-//         "config" : config
-//       });
-//     });  
-//   };
-
-
-// exports.editUser = (req, res) => {
-//     User.findById(req.params.id, (err, user) => {
-//       if (err) return console.error(err);
-//       user.username = req.body.username;
-//       user.password = req.body.password;
-//       user.email = req.body.email;
-//       user.age = req.body.age;
-//       user.answer1 = req.body.answer1;
-//       user.answer2 = req.body.answer2;
-//       user.answer3 = req.body.answer3;
-
-//       user.save((err, user) => {
-//         if (err) return console.error(err);
-//         console.log(req.body.username + ' updated');
-//       });
-//       res.redirect('/');
-//     });
-//   };
-
-
 exports.registerUser = (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(req.body.password, salt);
@@ -103,34 +67,56 @@ exports.login = (req, res) => {
 };
 
 exports.loginUser = (req, res) => {
-    let salt = bcrypt.genSaltSync(10);
-    let hash = bcrypt.hashSync(req.body.password, salt);
 
-
-    const test_user = User.find({
-        $and: [
-            {username: req.body.username},
-            {password: hash}
-        ]
-    });
-    if (req.body.username != ' ' && req.body.password != ' '){
-        if(test_user.exists){
+    User.findOne({username: req.body.username}, (err, user) => {
+        if(err) return console.error(err);
+        if (bcrypt.compareSync(req.body.password, user.password)){
             req.session.user = {
                 isAuthenticated: true,
                 username: req.body.username
             }
             res.redirect('/profile');
-        } else {
+        }else {
             res.redirect('/login');
         }
-    }else{
-        res.redirect('/login');
-    }
+    })
 };
 
 exports.profile = (req, res) => {
+    visited++;
+    res.cookie('visited', visited, {maxAge: 9999999999999999999999999999999999999});
     res.render("profile", {
         title: "Profile",
-        "config": config
+        "config": config,
+        visited: `You have been to your profile ${visited} times.`
     });
+
+};
+
+exports.settings = (req, res) => {
+    res.render('settings', {
+        title: 'Settings',
+        "config" : config
+    });
+};
+
+exports.editUser = (req, res) => {
+
+    User.findOne({username: req.session.user.username}, (err, user) => {
+        if(err) return console.error(err);
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(req.body.password, salt);
+        user.username = req.body.username;
+        user.password = hash;
+        user.email = req.body.email;
+        user.age = req.body.age;
+        user.answer1 = req.body.answer1;
+        user.answer2 = req.body.answer2;
+        user.answer3 = req.body.answer3;
+        user.save((err, user) => {
+            if(err) return console.err(err);
+            console.log(req.body.username + ' updated');
+        });
+        res.redirect('/profile');
+    })
 };

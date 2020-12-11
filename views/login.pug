@@ -3,11 +3,13 @@ extends layout
 block content
     h1 #{title}
     form("method"="POST" action="/login")
-        label Username
+        label Username:
         input(name="username" type="text")
         br
-        label Password
+        br
+        label Password:
         input(name="password" type="text")
+        br
         br
         label
         input(type="submit" value="Login")

@@ -1,6 +1,9 @@
 extends layout
 
 block content
-    h3 Welcome to your unfinished profile page
+    h3=visited
+    p(id='visitNumber')
     p
-      a(href='/logout') Logout?
+        a(href='/settings') Would you like to change your information?
+    p
+        a(href='/logout') Logout?
